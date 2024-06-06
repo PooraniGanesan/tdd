@@ -9,8 +9,10 @@ class StringCalculator
         get_add_occured_count
         return 0 if numbers.empty?
         numbers = numbers.gsub("\\n", "\n")
+
         if numbers.start_with?("//")
-            delimiter = numbers.scan(/\A\/\/.\s/)[0]
+
+            delimiter = numbers.scan(/\A\/\/.*\s/)[0]
             numbers_to_sum = numbers.split(delimiter)[1]
             delimiter = delimiter.gsub("//", "").gsub("\n", "")
             @values = numbers_to_sum.split(delimiter)
