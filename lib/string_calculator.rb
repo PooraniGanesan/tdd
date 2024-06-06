@@ -1,5 +1,12 @@
 class StringCalculator
+    @@add_method_count = 0
+
+    def get_add_occured_count
+        @@add_method_count+=1
+    end
+
     def add(numbers)
+        get_add_occured_count
         return 0 if numbers.empty?
         numbers = numbers.gsub("\\n", "\n")
         if numbers.start_with?("//")
