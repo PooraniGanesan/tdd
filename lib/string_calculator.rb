@@ -26,6 +26,7 @@ class StringCalculator
             sum = 0
             negatives = []
             @values.each do |x|
+                next if x.to_i > 1000
                 sum+=x.to_i
                 negatives << x if x.to_i.negative?
             end
