@@ -14,16 +14,12 @@ class StringCalculator
 
             delimiter = numbers.scan(/\A\/\/.*\s/)[0]
             numbers_to_sum = numbers.split(delimiter)[1]
-            delimiter = delimiter.gsub("//", "").gsub("\n", "")
-            @values = numbers_to_sum.split(delimiter)
+            delimiter = delimiter.gsub("//", "").gsub("\n", "").gsub("][", "")
+            @values = numbers_to_sum.split(/#{delimiter}/)
         else
             @values = numbers.split(/[,\n]/)
         end
 
-        
-        # @values.map(&:to_i).sum
-        #to find a char start with // "/;\n23".start_with?("//")
-        #to scan delimiters "//;\n23".scan(/\A\/\/.\s/)
         begin
             sum = 0
             negatives = []
