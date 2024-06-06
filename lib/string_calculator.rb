@@ -17,13 +17,13 @@ class StringCalculator
         #to scan delimiters "//;\n23".scan(/\A\/\/.\s/)
         begin
         sum = 0
+        negatives = []
         @values.each do |x|
-            p x
-            if x.to_i.negative?
-            raise StandardError.new "negatives not allowed #{x}" 
-            end
             sum+=x.to_i
+            negatives << x if x.to_i.negative?
         end
+        unless negatives.empty?
+            raise_error "negatives not allowed #{negatives.join(",")}"
         end 
         sum
     end
