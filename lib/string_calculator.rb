@@ -16,15 +16,16 @@ class StringCalculator
         #to find a char start with // "/;\n23".start_with?("//")
         #to scan delimiters "//;\n23".scan(/\A\/\/.\s/)
         begin
-        sum = 0
-        negatives = []
-        @values.each do |x|
-            sum+=x.to_i
-            negatives << x if x.to_i.negative?
-        end
-        unless negatives.empty?
-            raise_error "negatives not allowed #{negatives.join(",")}"
-        end 
+            sum = 0
+            negatives = []
+            @values.each do |x|
+                sum+=x.to_i
+                negatives << x if x.to_i.negative?
+            end
+            unless negatives.empty?
+                raise "negatives not allowed #{negatives.join(",")}"
+            end
+         end 
         sum
     end
 end
